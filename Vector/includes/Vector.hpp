@@ -16,8 +16,8 @@ class Vector
 		~Vector();
 
 		Vector<K> &operator=(Vector<K> const &rhs);
-		K &operator[](std::size_t idx);
-		const K &operator[](std::size_t idx) const;
+		K &operator[](size_t idx);
+		const K &operator[](size_t idx) const;
 		
 		size_t getSize(void) const;
 };

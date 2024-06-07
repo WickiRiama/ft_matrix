@@ -52,7 +52,7 @@ const K &Vector<K>::operator[](std::size_t idx) const
 template <typename K>
 std::ostream& operator<<(std::ostream& os, const Vector<K> &vec)
 {
-	std::cout << "[";
+	os << "[";
 	for (size_t i = 0; i < vec.getSize(); i++)
 	{
 		if (i != 0)
@@ -61,7 +61,7 @@ std::ostream& operator<<(std::ostream& os, const Vector<K> &vec)
 		}
 		os << vec[i];
 	}
-	os << "]" << std::endl;
+	os << "]";
 
 	return os;
 }

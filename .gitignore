@@ -4,3 +4,4 @@
 *.out
 */objs/
 .vscode/
+vec_test

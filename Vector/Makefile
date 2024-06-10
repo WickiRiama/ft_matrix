@@ -2,7 +2,10 @@ NAME = vec_test
 
 SRCS_DIR = srcs/
 SRCS = ${addprefix ${SRCS_DIR}, \
-	main.cpp \
+		main.cpp \
+	}
+TEMPLATES = ${addprefix ./includes/, \
+		Vector.tpp \
 	}
 
 OBJS_DIR = objs/
@@ -38,4 +41,4 @@ fclean: clean
 re: fclean
 	make -C .
 
--include ${DEPS}%
+-include ${DEPS}

@@ -8,7 +8,7 @@ Test(MatrixClass, defaultConstructor)
 {
 	Matrix<float> my_mat;
 	std::pair<size_t, size_t> result = {0, 0};
-	cr_expect(my_mat.getSize() == result);
+	cr_expect(my_mat.getShape() == result);
 
 	std::stringstream ss;
 	ss << my_mat;
@@ -26,13 +26,13 @@ Test(MatrixClass, vectorConstructor)
 	Matrix<float> my_mat4({{-1.5, 2.5, 300, 8}, {-1.5, 2.5, 300, 8}});
 
 	std::pair<size_t, size_t> result = {3, 3};
-	cr_expect(my_mat1.getSize() == result);
+	cr_expect(my_mat1.getShape() == result);
 	result = {1, 1};
-	cr_expect(my_mat2.getSize() == result);
+	cr_expect(my_mat2.getShape() == result);
 	result = {2, 3};
-	cr_expect(my_mat3.getSize() == result);
+	cr_expect(my_mat3.getShape() == result);
 	result = {2, 4};
-	cr_expect(my_mat4.getSize() == result);
+	cr_expect(my_mat4.getShape() == result);
 
 	std::stringstream ss;
 	ss << my_mat1;
@@ -60,9 +60,9 @@ Test(MatrixClass, copyConstructor)
 	Matrix<float> copy_mat2(my_mat2);
 
 	std::pair<size_t, size_t> result = {0, 0};
-	cr_expect(copy_mat1.getSize() == result);
+	cr_expect(copy_mat1.getShape() == result);
 	result = {2, 2};
-	cr_expect(copy_mat2.getSize() == result);
+	cr_expect(copy_mat2.getShape() == result);
 
 	std::stringstream ss;
 	ss << copy_mat1;
@@ -71,4 +71,17 @@ Test(MatrixClass, copyConstructor)
 	ss.str("");
 	ss << copy_mat2;
 	cr_expect(strcmp(ss.str().c_str(), "[[-1.5, 2.5],\n [300, 8]]") == 0);
+}
+
+Test(MatrixClass, isSquared)
+{
+	Matrix<float> my_mat1;
+	Matrix<float> my_mat2({{-1.5, 2.5}, {300, 8}});
+	Matrix<float> my_mat3({{-1.5, 2.5}, {300, 8}, {7, 900}});
+	Matrix<float> my_mat4({{-1.5, 2.5, 9}, {300, 8, 1.5}});
+
+	cr_expect(my_mat1.isSquare() == true);
+	cr_expect(my_mat2.isSquare() == true);
+	cr_expect(my_mat3.isSquare() == false);
+	cr_expect(my_mat3.isSquare() == false);
 }

@@ -51,15 +51,16 @@ const std::vector<K> &Matrix<K>::operator[](std::size_t idx) const
 template <typename K>
 std::ostream &operator<<(std::ostream &os, const Matrix<K> &mat)
 {
+	std::pair<size_t, size_t> shape = mat.getShape();
 	os << "[";
-	for (size_t row = 0; row < mat.getSize().first; row++)
+	for (size_t row = 0; row < shape.first; row++)
 	{
 		if (row != 0)
 		{
 			os << " ";
 		}
 		os << "[";
-		for (size_t col = 0; col < mat[row].size(); col++)
+		for (size_t col = 0; col < shape.second; col++)
 		{
 			if (col != 0)
 			{
@@ -68,7 +69,7 @@ std::ostream &operator<<(std::ostream &os, const Matrix<K> &mat)
 			os << mat[row][col];
 		}
 		os << "]";
-		if (row != mat.getSize().first - 1)
+		if (row != shape.first - 1)
 		{
 			os << "," << std::endl;
 		}
@@ -83,7 +84,7 @@ std::ostream &operator<<(std::ostream &os, const Matrix<K> &mat)
 //=============================================================================
 
 template <typename K>
-std::pair<size_t, size_t> Matrix<K>::getSize(void) const
+std::pair<size_t, size_t> Matrix<K>::getShape(void) const
 {
 	if (_matrix.size() == 0)
 	{
@@ -94,5 +95,13 @@ std::pair<size_t, size_t> Matrix<K>::getSize(void) const
 		return {_matrix.size(), _matrix[0].size()};
 	}
 }
+
+template <typename K>
+bool Matrix<K>::isSquare(void) const
+{
+	std::pair<size_t, size_t> shape = this->getShape();
+	return shape.first == shape.second;
+}
+
 
 #endif

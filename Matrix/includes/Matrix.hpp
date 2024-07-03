@@ -19,7 +19,8 @@ class Matrix
 		std::vector<K> &operator[](size_t idx);
 		const std::vector<K> &operator[](size_t idx) const;
 		
-		std::pair<size_t, size_t> getSize(void) const;
+		std::pair<size_t, size_t> getShape(void) const;
+		bool isSquare(void) const;
 };
 
 template <typename K>

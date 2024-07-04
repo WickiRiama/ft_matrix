@@ -101,6 +101,22 @@ Test(MatrixClass, isSquared)
 	cr_expect(my_mat3.isSquare() == false);
 }
 
+Test(MatrixClass, equalityOperator)
+{
+	Matrix<float> mat1;
+	Matrix<float> mat2;
+	Matrix<float> mat3({{1, 2}, {3, 4}, {5, 6}});
+	Matrix<float> mat4({{1, 2, 3}, {4, 5, 6}});
+	Matrix<float> mat5({{1, 2}, {3, 4}, {5, 6}});
+	Matrix<float> mat6({{1, 2, 3}, {4, 5, 6}});
+
+	cr_assert(mat1 == mat2);
+	cr_assert(!(mat1 == mat3));
+	cr_assert(mat3 == mat5);
+	cr_assert(!(mat3 == mat6));
+	cr_assert(mat4 == mat6);
+}
+
 Test(MatrixClass, toVector)
 {
 	Matrix<float> my_mat_row({{1, 2.0, 3.5}});

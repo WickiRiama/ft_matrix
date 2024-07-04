@@ -23,7 +23,8 @@ class Matrix
 		Matrix<K> &operator=(Matrix<K> const &rhs);
 		std::vector<K> &operator[](size_t idx);
 		const std::vector<K> &operator[](size_t idx) const;
-		
+		bool operator==(Matrix<K> const &b) const;
+
 		std::pair<size_t, size_t> getShape(void) const;
 		bool isSquare(void) const;
 		Vector<K> toVector(void) const;

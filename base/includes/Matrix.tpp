@@ -60,6 +60,25 @@ const std::vector<K> &Matrix<K>::operator[](std::size_t idx) const
 }
 
 template <typename K>
+bool Matrix<K>::operator==(Matrix<K> const &b) const
+{
+	std::pair<size_t, size_t> shape = this->getShape();
+	if (b.getShape() != shape)
+	{
+		return false;
+	}
+	for (size_t row = 0; row < shape.first; row++)
+	{
+		if ((*this)[row] != b[row])
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+
+template <typename K>
 std::ostream &operator<<(std::ostream &os, const Matrix<K> &mat)
 {
 	std::pair<size_t, size_t> shape = mat.getShape();

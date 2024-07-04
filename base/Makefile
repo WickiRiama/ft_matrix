@@ -1,10 +1,12 @@
-NAME = mat_test
+NAME = base_test
 
 SRCS_DIR = srcs/
 SRCS = ${addprefix ${SRCS_DIR}, \
-		main.cpp \
+		test_vector.cpp \
+		test_matrix.cpp \
 	}
 TEMPLATES = ${addprefix ./includes/, \
+		Vector.tpp \
 		Matrix.tpp \
 	}
 

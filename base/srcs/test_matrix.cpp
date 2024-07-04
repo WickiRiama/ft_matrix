@@ -100,3 +100,19 @@ Test(MatrixClass, isSquared)
 	cr_expect(my_mat3.isSquare() == false);
 	cr_expect(my_mat3.isSquare() == false);
 }
+
+Test(MatrixClass, toVector)
+{
+	Matrix<float> my_mat_row({{1, 2.0, 3.5}});
+	Matrix<float> my_mat_col({{1}, {2.0}, {3.5}});
+	Matrix<float> my_mat_wrong({{-1.5, 2.5}, {300, 8}});
+
+	Vector<float> my_vec({1, 2.0, 3.5});
+
+	Vector<float> result = my_mat_row.toVector();
+	cr_expect(result == my_vec);
+	result = my_mat_col.toVector();
+	cr_expect(result == my_vec);
+	result = my_mat_wrong.toVector();
+	cr_expect(result == std::vector<float>());
+}

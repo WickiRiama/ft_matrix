@@ -114,5 +114,32 @@ bool Matrix<K>::isSquare(void) const
 	return shape.first == shape.second;
 }
 
+//=============================================================================
+// Methods
+//=============================================================================
+
+template <typename K>
+Vector<K> Matrix<K>::toVector(void) const
+{
+	std::pair<size_t, size_t> shape = this->getShape();
+	std::vector<K> result;
+	if (shape.first == 1)
+	{
+		result = (*this)[0];
+	}
+	else if (shape.second == 1)
+	{
+		for (size_t row = 0; row < shape.first; row++)
+		{
+			result.push_back((*this)[row][0]);
+		}
+	}
+	else
+	{
+		std::cerr << "This matrix can't be converted to a vector (too many dimensions)" << std:: endl;
+	}
+	return Vector<K>(result);
+}
+
 
 #endif

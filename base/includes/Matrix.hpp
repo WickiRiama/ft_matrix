@@ -4,6 +4,11 @@
 #include <vector>
 #include <ostream>
 
+#include "Vector.hpp"
+
+// template <typename K>
+// class Vector<K>;
+
 template <typename K>
 class Matrix
 {
@@ -21,6 +26,8 @@ class Matrix
 		
 		std::pair<size_t, size_t> getShape(void) const;
 		bool isSquare(void) const;
+		Vector<K> toVector(void) const;
+
 };
 
 template <typename K>

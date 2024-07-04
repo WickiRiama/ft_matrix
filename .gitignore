@@ -4,5 +4,4 @@
 *.out
 */objs/
 .vscode/
-vec_test
-mat_test
+base_test

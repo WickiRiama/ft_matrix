@@ -19,7 +19,7 @@ Test(MatrixClass, defaultConstructor)
 Test(MatrixClass, vectorConstructor)
 {
 	Matrix<float> my_mat1({{1, 2, 3}, {10, 20, 30}, {11, 22, 33}});
-	std::vector< std::vector<float> > test_vec;
+	std::vector<std::vector<float>> test_vec;
 	test_vec.push_back({1});
 	Matrix<float> my_mat2(test_vec);
 	Matrix<float> my_mat3({{-1, -2, -3}, {-10, -20, -30}});
@@ -71,6 +71,21 @@ Test(MatrixClass, copyConstructor)
 	ss.str("");
 	ss << copy_mat2;
 	cr_expect(strcmp(ss.str().c_str(), "[[-1.5, 2.5],\n [300, 8]]") == 0);
+}
+
+Test(MatrixClass, rowError)
+{
+	std::stringstream ss;
+	ss << "";
+	try
+	{
+		Matrix<float> my_mat({{1, 2, 3}, {1.6, 80}});
+	}
+	catch (const std::length_error &e)
+	{
+		ss << e.what();
+	}
+	cr_expect(strcmp(ss.str().c_str(), "Rows with different sizes") == 0);
 }
 
 Test(MatrixClass, isSquared)

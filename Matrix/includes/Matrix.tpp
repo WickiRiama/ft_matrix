@@ -10,6 +10,17 @@
 template <typename K>
 Matrix<K>::Matrix(std::vector<std::vector<K>> mat)
 {
+	if (mat.size() > 0)
+	{
+		size_t row_len = mat[0].size();
+		for (size_t row = 1; row < mat.size(); row++)
+		{
+			if (mat[row].size() != row_len)
+			{
+				throw std::length_error("Rows with different sizes");
+			}
+		}
+	}
 	_matrix = mat;
 }
 

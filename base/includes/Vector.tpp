@@ -48,6 +48,11 @@ const K &Vector<K>::operator[](std::size_t idx) const
 	return _vector[idx];
 }
 
+template <typename K>
+bool Vector<K>::operator==(Vector<K> const &b) const
+{
+	return this->_vector == b._vector;
+}
 
 template <typename K>
 std::ostream& operator<<(std::ostream& os, const Vector<K> &vec)
@@ -65,6 +70,7 @@ std::ostream& operator<<(std::ostream& os, const Vector<K> &vec)
 
 	return os;
 }
+
 
 
 //=============================================================================

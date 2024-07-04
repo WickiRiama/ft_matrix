@@ -18,6 +18,7 @@ class Vector
 		Vector<K> &operator=(Vector<K> const &rhs);
 		K &operator[](size_t idx);
 		const K &operator[](size_t idx) const;
+		bool operator==(Vector<K> const &b) const;
 		
 		size_t getSize(void) const;
 };

@@ -64,3 +64,20 @@ Test(VectorClass, copyConstructor)
 	ss << copy_vec2;
 	cr_expect(strcmp(ss.str().c_str(), "[-1.5, 2.5, 300, 8]") == 0);
 }
+
+Test(VectorClass, equalityOperator)
+{
+	Vector<float> my_vec1;
+	Vector<float> my_vec2({-1.5, 2.5, 300, 8});
+	Vector<float> my_vec3;
+	Vector<float> my_vec4({-1.5, 2.5, 300, 8});
+
+	bool result = (my_vec1 == my_vec3);
+	cr_expect(result);
+	result = (my_vec1 == my_vec2);
+	cr_expect(!result);
+	result = (my_vec4 == my_vec2);
+	cr_expect(result);
+	result = (my_vec4 == my_vec3);
+	cr_expect(!result);
+}

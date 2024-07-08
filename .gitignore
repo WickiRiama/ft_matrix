@@ -4,4 +4,4 @@
 *.out
 */objs/
 .vscode/
-base_test
+*_test

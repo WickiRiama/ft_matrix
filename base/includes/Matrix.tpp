@@ -1,6 +1,8 @@
 #ifndef MATRIX_TPP
 #define MATRIX_TPP
 
+#include <iostream>
+
 #include "Matrix.hpp"
 
 //=============================================================================
@@ -69,14 +71,16 @@ bool Matrix<K>::operator==(Matrix<K> const &b) const
 	}
 	for (size_t row = 0; row < shape.first; row++)
 	{
-		if ((*this)[row] != b[row])
+		for (size_t col = 0; col < shape.second; col++)
 		{
-			return false;
+			if (!isEqual((*this)[row][col], b[row][col]))
+			{
+				return false;
+			}
 		}
 	}
 	return true;
 }
-
 
 template <typename K>
 std::ostream &operator<<(std::ostream &os, const Matrix<K> &mat)
@@ -155,10 +159,9 @@ Vector<K> Matrix<K>::toVector(void) const
 	}
 	else
 	{
-		std::cerr << "This matrix can't be converted to a vector (too many dimensions)" << std:: endl;
+		std::cerr << "This matrix can't be converted to a vector (too many dimensions)" << std::endl;
 	}
 	return Vector<K>(result);
 }
-
 
 #endif

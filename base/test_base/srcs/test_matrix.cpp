@@ -105,9 +105,9 @@ Test(MatrixClass, equalityOperator)
 {
 	Matrix<float> mat1;
 	Matrix<float> mat2;
-	Matrix<float> mat3({{1, 2}, {3, 4}, {5, 6}});
+	Matrix<float> mat3({{1, 2.2}, {3, 4}, {5, 6}});
 	Matrix<float> mat4({{1, 2, 3}, {4, 5, 6}});
-	Matrix<float> mat5({{1, 2}, {3, 4}, {5, 6}});
+	Matrix<float> mat5({{1, 2.2}, {3, 4}, {5, 6}});
 	Matrix<float> mat6({{1, 2, 3}, {4, 5, 6}});
 
 	cr_assert(mat1 == mat2);

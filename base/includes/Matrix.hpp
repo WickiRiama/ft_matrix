@@ -6,8 +6,8 @@
 
 #include "Vector.hpp"
 
-// template <typename K>
-// class Vector<K>;
+template <typename K>
+class Vector;
 
 template <typename K>
 class Matrix

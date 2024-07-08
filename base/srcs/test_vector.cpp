@@ -81,3 +81,31 @@ Test(VectorClass, equalityOperator)
 	result = (my_vec4 == my_vec3);
 	cr_expect(!result);
 }
+
+Test(VectorClass, toColMatrix)
+{
+	Vector<float> my_vec1;
+	Vector<float> my_vec2({-1.5, 2.5, 300, 8});
+
+	Matrix<float> mat1 = my_vec1.toColMatrix();
+	Matrix<float> mat1_check;
+	cr_expect(mat1 == mat1_check);
+
+	Matrix<float> mat2 = my_vec2.toColMatrix();
+	Matrix<float> mat2_check({{-1.5}, {2.5}, {300}, {8}});
+	cr_expect(mat2 == mat2_check);
+}
+
+Test(VectorClass, toRowMatrix)
+{
+	Vector<float> my_vec1;
+	Vector<float> my_vec2({-1.5, 2.5, 300, 8});
+
+	Matrix<float> mat1 = my_vec1.toRowMatrix();
+	Matrix<float> mat1_check;
+	cr_expect(mat1 == mat1_check);
+
+	Matrix<float> mat2 = my_vec2.toRowMatrix();
+	Matrix<float> mat2_check({{-1.5, 2.5, 300, 8}});
+	cr_expect(mat2 == mat2_check);
+}

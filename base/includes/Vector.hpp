@@ -4,6 +4,11 @@
 #include <vector>
 #include <ostream>
 
+#include "Matrix.hpp"
+
+template <typename K>
+class Matrix;
+
 template <typename K>
 class Vector
 {
@@ -21,6 +26,8 @@ class Vector
 		bool operator==(Vector<K> const &b) const;
 		
 		size_t getSize(void) const;
+		Matrix<K> toColMatrix(void) const;
+		Matrix<K> toRowMatrix(void) const;
 };
 
 template <typename K>

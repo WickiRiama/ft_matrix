@@ -83,4 +83,44 @@ size_t Vector<K>::getSize(void) const
 	return _vector.size();
 }
 
+template <typename K>
+Matrix<K> Vector<K>::toColMatrix(void) const
+{
+	size_t size = this->getSize();
+	if (size == 0)
+	{
+		return Matrix<K>();
+	}
+
+	std::vector< std::vector<K> > outvector;
+	for (size_t k = 0; k < size; k++)
+	{
+		std::vector<K> invector(1, (*this)[k]);
+		outvector.push_back(invector);
+	}
+
+	return Matrix<K>(outvector);
+}
+
+template <typename K>
+Matrix<K> Vector<K>::toRowMatrix(void) const
+{
+	size_t size = this->getSize();
+	if (size == 0)
+	{
+		return Matrix<K>();
+	}
+
+	std::vector< std::vector<K> > outvector;
+	std::vector<K> invector;
+	for (size_t k = 0; k < size; k++)
+	{
+		invector.push_back((*this)[k]);
+	}
+	outvector.push_back(invector);
+	
+	return Matrix<K>(outvector);
+}
+
+
 #endif

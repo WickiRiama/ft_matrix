@@ -31,6 +31,9 @@ IFLAGS = -I../base/includes \
 		 -MMD
 LFLAGS = -Wl,-rpath=${HOME}/Criterion/build/src -L${HOME}/Criterion/build/src -lcriterion
 
+.PHONY: all
+all: ${NAME} ${NAME_DEBUG}
+
 ${NAME}: ${OBJS_DIR} ${OBJS}
 	${CXX} ${LFLAGS} ${CXXFLAGS} ${OBJS} -o ${NAME}
 
@@ -43,9 +46,6 @@ ${OBJS_DIR}%.o: %.cpp
 
 ${OBJS_DIR}:
 	mkdir -p ${OBJS_DIR}
-
-.PHONY: all
-all:
 
 .PHONY: debug
 debug: ${NAME_DEBUG}

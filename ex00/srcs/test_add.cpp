@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "Matrix.hpp"
+#include "Vector.hpp"
 
 Test(Add, matrixAdd)
 {
@@ -17,4 +18,43 @@ Test(Add, matrixAdd)
 	cr_expect(mat1 == result1);
 	mat3.add(mat4);
 	cr_expect(mat3 == result2);
+
+	std::stringstream ss;
+	ss << "";
+	try
+	{
+		mat1.add(mat3);
+	}
+	catch (const std::length_error &e)
+	{
+		ss << e.what();
+	}
+	cr_expect(strcmp(ss.str().c_str(), "Matrices with different sizes") == 0);
+}
+
+Test(Add, vectorAdd)
+{
+	Vector<float> vec1;
+	Vector<float> vec2;
+	Vector<float> vec3({1.0, 8, -1, 3.6});
+	Vector<float> vec4({4, -12, -6, 9.6});
+
+	Vector<float> result1;
+	Vector<float> result2({5, -4, -7, 13.2});
+	vec1.add(vec2);
+	cr_expect(vec1 == result1);
+	vec3.add(vec4);
+	cr_expect(vec3 == result2);
+
+	std::stringstream ss;
+	ss << "";
+	try
+	{
+		vec1.add(vec3);
+	}
+	catch (const std::length_error &e)
+	{
+		ss << e.what();
+	}
+	cr_expect(strcmp(ss.str().c_str(), "Vectors with different sizes") == 0);
 }

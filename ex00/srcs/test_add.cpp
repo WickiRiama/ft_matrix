@@ -38,6 +38,7 @@ Test(Add, vectorAdd)
 	Vector<float> vec2;
 	Vector<float> vec3({1.0, 8, -1, 3.6});
 	Vector<float> vec4({4, -12, -6, 9.6});
+	Vector<float> vec5({4, -12, -6, 9.6, 25});
 
 	Vector<float> result1;
 	Vector<float> result2({5, -4, -7, 13.2});
@@ -51,6 +52,16 @@ Test(Add, vectorAdd)
 	try
 	{
 		vec1.add(vec3);
+	}
+	catch (const std::length_error &e)
+	{
+		ss << e.what();
+	}
+	cr_expect(strcmp(ss.str().c_str(), "Vectors with different sizes") == 0);
+	ss.str("");
+	try
+	{
+		vec3.add(vec5);
 	}
 	catch (const std::length_error &e)
 	{

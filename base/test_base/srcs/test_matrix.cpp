@@ -129,6 +129,15 @@ Test(MatrixClass, toVector)
 	cr_expect(result == my_vec);
 	result = my_mat_col.toVector();
 	cr_expect(result == my_vec);
+
+	// Redirect cerr in strCerr to avoid printing in test
+	std::streambuf* oldCerrStreamBuf = std::cerr.rdbuf();
+	std::ostringstream strCerr;
+	std::cerr.rdbuf( strCerr.rdbuf() );
+
 	result = my_mat_wrong.toVector();
 	cr_expect(result == std::vector<float>());
+	
+	// Restore cerr
+	std::cerr.rdbuf( oldCerrStreamBuf );
 }

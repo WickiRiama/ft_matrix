@@ -16,6 +16,5 @@ Test(Add, matrixAdd)
 	mat1.add(mat2);
 	cr_expect(mat1 == result1);
 	mat3.add(mat4);
-	std::cout << mat3 << std::endl;
 	cr_expect(mat3 == result2);
 }

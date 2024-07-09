@@ -51,7 +51,19 @@ const K &Vector<K>::operator[](std::size_t idx) const
 template <typename K>
 bool Vector<K>::operator==(Vector<K> const &b) const
 {
-	return this->_vector == b._vector;
+	size_t size = this->getSize();
+	if (b.getSize() != size)
+	{
+		return false;
+	}
+	for (size_t i = 0; i < size; i++)
+	{
+		if (!isEqual((*this)[i], b[i]))
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 template <typename K>

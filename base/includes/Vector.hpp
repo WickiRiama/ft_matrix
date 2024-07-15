@@ -34,6 +34,7 @@ public:
 public:
 	void add(Vector<K> const &v);
 	void sub(Vector<K> const &v);
+	void scl(K const a);
 };
 
 template <typename K>

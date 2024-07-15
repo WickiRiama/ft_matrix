@@ -35,4 +35,14 @@ void Vector<K>::sub(Vector<K> const &v)
 	}
 }
 
+template <typename K>
+void Vector<K>::scl(K const a)
+{
+	size_t size = this->getSize();
+	for (size_t i = 0; i < size; i++)
+	{
+		(*this)[i] *= a;
+	}
+}
+
 #endif

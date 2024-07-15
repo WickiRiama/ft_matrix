@@ -12,6 +12,7 @@ SRCS = 	test_vector.cpp \
 		utils.cpp \
 		test_add.cpp \
 		test_sub.cpp \
+		test_scl.cpp \
 
 SRCS_DEBUG =	debug.cpp \
 				utils.cpp \

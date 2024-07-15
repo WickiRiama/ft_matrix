@@ -34,6 +34,7 @@ public:
 public:
 	void add(Matrix<K> const &v);
 	void sub(Matrix<K> const &v);
+	void scl(K const a);
 };
 
 template <typename K>

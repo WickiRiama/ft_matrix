@@ -41,4 +41,18 @@ void Matrix<K>::sub(Matrix<K> const &m)
 	}
 }
 
+template <typename K>
+void Matrix<K>::scl(K const a)
+{
+	std::pair<size_t, size_t> shape = this->getShape();
+	for (size_t row = 0; row < shape.first; row++)
+	{
+		for (size_t col = 0; col < shape.second; col++)
+		{
+			(*this)[row][col] *= a;
+		}
+	}
+}
+
+
 #endif

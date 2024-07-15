@@ -37,7 +37,6 @@ Test(Sub, vectorSub)
 	Vector<float> vec2;
 	Vector<float> vec3({1.0, 8, -1, 3.6});
 	Vector<float> vec4({4, -12, -6, 9.6});
-	Vector<float> vec5({4, -12, -6, 9.6, 25});
 
 	Vector<float> result1;
 	Vector<float> result2({-3, 20, 5, -6});
@@ -57,14 +56,20 @@ Test(Sub, vectorSub)
 		ss << e.what();
 	}
 	cr_expect(strcmp(ss.str().c_str(), "Vectors with different sizes") == 0);
-	ss.str("");
-	try
-	{
-		vec3.sub(vec5);
-	}
-	catch (const std::length_error &e)
-	{
-		ss << e.what();
-	}
-	cr_expect(strcmp(ss.str().c_str(), "Vectors with different sizes") == 0);
+}
+
+Test(Sub, matrixSchoolTest)
+{
+	Matrix<float> u({{1., 2.}, {3., 4.}});
+	Matrix<float> v({{7., 4.}, {-2., 2.}});
+	u.sub(v);
+	cr_expect(u == Matrix<float>({{-6.0, -2.0}, {5.0, 2.0}}));
+}
+
+Test(Sub, vectorSchoolTest)
+{
+	Vector<float> u({2., 3.});
+	Vector<float> v({5., 7.});
+	u.sub(v);
+	cr_expect(u == Vector<float>({-3.0, -4.0}));
 }

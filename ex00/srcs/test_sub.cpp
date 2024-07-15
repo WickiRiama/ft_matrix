@@ -6,7 +6,29 @@
 
 Test(Sub, matrixSub)
 {
-	cr_expect(1 == 1);
+	Matrix<float> mat1;
+	Matrix<float> mat2;
+	Matrix<float> mat3({{1.0, 8}, {-1, 3.6}});
+	Matrix<float> mat4({{4, -12}, {-6, 9.6}});
+
+	Matrix<float> result1;
+	Matrix<float> result2({{-3, 20}, {5, -6}});
+	mat1.sub(mat2);
+	cr_expect(mat1 == result1);
+	mat3.sub(mat4);
+	cr_expect(mat3 == result2);
+
+	std::stringstream ss;
+	ss << "";
+	try
+	{
+		mat1.sub(mat3);
+	}
+	catch (const std::length_error &e)
+	{
+		ss << e.what();
+	}
+	cr_expect(strcmp(ss.str().c_str(), "Matrices with different sizes") == 0);
 }
 
 Test(Sub, vectorSub)

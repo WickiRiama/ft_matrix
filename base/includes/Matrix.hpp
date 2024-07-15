@@ -33,6 +33,7 @@ public:
 	// Add-Sub-Scale ==========================================================
 public:
 	void add(Matrix<K> const &v);
+	void sub(Matrix<K> const &v);
 };
 
 template <typename K>

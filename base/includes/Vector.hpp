@@ -44,5 +44,6 @@ bool isEqual(float const &a, float const &b);
 
 #include "Vector.tpp"
 #include "Vector_add_sub_scale.tpp"
+#include "Vector_lin_cmb.tpp"
 
 #endif

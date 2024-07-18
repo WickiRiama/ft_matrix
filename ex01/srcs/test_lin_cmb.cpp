@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iostream>
 
-#include "Vector.hpp"
+#include "Vector_lin_cmb.hpp"
 
 Test(LinCmb, empty)
 {

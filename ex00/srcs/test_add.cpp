@@ -2,8 +2,8 @@
 #include <sstream>
 #include <iostream>
 
-#include "Matrix.hpp"
-#include "Vector.hpp"
+#include "Matrix_add_sub_scale.hpp"
+#include "Vector_add_sub_scale.hpp"
 
 Test(Add, matrixAdd)
 {

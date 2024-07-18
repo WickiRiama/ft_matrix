@@ -42,8 +42,6 @@ std::ostream &operator<<(std::ostream &os, const Matrix<K> &mat);
 
 bool isEqual(float const &a, float const &b);
 
-
 #include "Matrix.tpp"
-#include "Matrix_add_sub_scale.tpp"
 
 #endif

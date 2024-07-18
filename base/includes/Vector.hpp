@@ -37,10 +37,16 @@ public:
 	void scl(K const a);
 };
 
+// Operators ==================================================================
 template <typename K>
 std::ostream &operator<<(std::ostream &os, const Vector<K> &vec);
 
+// Utils ======================================================================
 bool isEqual(float const &a, float const &b);
+
+// Linear Combination =========================================================
+template <typename K>
+Vector<K> linear_combination(std::vector< Vector<K> > const &u, std::vector<K> const &coefs);
 
 #include "Vector.tpp"
 #include "Vector_add_sub_scale.tpp"

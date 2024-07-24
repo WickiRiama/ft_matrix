@@ -61,7 +61,7 @@ Test(Lerp, vectorSizeError)
 	{
 		Vector<float> result = lerp(Vector<float>({1}), Vector<float>({1, 2}), 0.3);
 	}
-	catch(const std::length_error& e)
+	catch(const std::length_error &e)
 	{
 		ss << e.what();
 	}

@@ -35,6 +35,9 @@ public:
 	void add(Vector<K> const &v);
 	void sub(Vector<K> const &v);
 	void scl(K const a);
+
+	// Dot Product ============================================================
+	K dot(Vector<K> const &v);
 };
 
 // Operators ==================================================================

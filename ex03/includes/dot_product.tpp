@@ -4,8 +4,22 @@
 #include <cmath>
 
 #include "Vector.hpp"
-#include "Matrix.hpp"
 
+template <typename K>
+K Vector<K>::dot(Vector<K> const &v)
+{
+	size_t size = this->getSize();
+	if (v.getSize() != size)
+	{
+		throw std::length_error("Vectors with different sizes");
+	}
 
+	K result = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		result = fma((*this)[i], v[i], result);
+	}
+	return result;
+}
 
 #endif

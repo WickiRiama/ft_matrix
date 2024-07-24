@@ -53,3 +53,11 @@ Test(DotPrd, ortho)
 	cr_assert(isEqual(u.dot(v), 0.0));
 }
 
+Test(DotPrd, empty)
+{
+	Vector<float> u;
+	Vector<float> v;
+	
+	cr_assert(isEqual(u.dot(v), 0.0));
+}
+

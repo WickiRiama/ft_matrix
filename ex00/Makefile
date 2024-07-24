@@ -27,7 +27,7 @@ DEPS_DEBUG = ${SRCS_DEBUG:%.cpp=${OBJS_DIR}%.d}
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -g
 IFLAGS = -I../base/includes \
-		 -I../base/includes/add_sub_scale \
+		 -I./includes/ \
 		 -I${HOME}/Criterion/include/ \
 		 -MMD
 LFLAGS = -Wl,-rpath=${HOME}/Criterion/build/src -L${HOME}/Criterion/build/src -lcriterion

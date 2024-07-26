@@ -24,4 +24,19 @@ float Vector<K>::norm_1(void)
 	return result;
 }
 
+template <typename K>
+float Vector<K>::norm(void)
+{
+	size_t size = this->getSize();
+	float result = 0;
+
+	for (size_t i = 0; i < size; i++)
+	{
+		result = fma((*this)[i], (*this)[i], result);
+	}
+
+	return powf32(result, 0.5);
+}
+
+
 #endif

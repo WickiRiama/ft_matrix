@@ -40,9 +40,9 @@ public:
 	K dot(Vector<K> const &v);
 
 	// Norm ============================================================
-	float norm_1(void);
-	float norm(void);
-	float norm_inf(void);
+	float norm_1(void) const;
+	float norm(void) const;
+	float norm_inf(void) const;
 };
 
 // Operators ==================================================================

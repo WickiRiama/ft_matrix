@@ -6,5 +6,16 @@
 
 Test(Cosine, empty)
 {
-	cr_assert(1 == 1);
+	Vector<float> u({1, 2});
+	Vector<float> v({0, 0});
+	try
+	{
+	float result = angle_cos(u, v);
+	std::cout << result << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 }

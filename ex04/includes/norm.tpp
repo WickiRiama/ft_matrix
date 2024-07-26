@@ -7,7 +7,7 @@
 
 // Manhattan norm
 template <typename K>
-float Vector<K>::norm_1(void)
+float Vector<K>::norm_1(void) const
 {
 	size_t size = this->getSize();
 	float result = 0;
@@ -27,7 +27,7 @@ float Vector<K>::norm_1(void)
 
 // Euclidian norm
 template <typename K>
-float Vector<K>::norm(void)
+float Vector<K>::norm(void) const
 {
 	size_t size = this->getSize();
 	float result = 0;
@@ -42,7 +42,7 @@ float Vector<K>::norm(void)
 
 // Supremum norm
 template <typename K>
-float Vector<K>::norm_inf(void)
+float Vector<K>::norm_inf(void) const
 {
 	size_t size = this->getSize();
 	float result = 0;
@@ -51,7 +51,7 @@ float Vector<K>::norm_inf(void)
 	{
 		result = std::max(result, std::max((*this)[i], -1 * (*this)[i]));
 	}
-	
+
 	return result;
 }
 

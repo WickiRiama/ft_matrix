@@ -45,6 +45,11 @@ public:
 	// Trace ==================================================================
 public:
 	K trace(void) const;
+
+	// Transpose ==============================================================
+public:
+	Matrix<K> transpose(void) const;
+
 };
 
 template <typename K>

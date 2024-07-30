@@ -14,6 +14,15 @@ Vector<K>::Vector(std::vector<K> vec)
 }
 
 template <typename K>
+Vector<K>::Vector(size_t n)
+{
+	for (size_t i = 0; i < n; i++)
+	{
+		_vector.push_back(K());
+	}
+}
+
+template <typename K>
 Vector<K>::Vector(Vector<K> const &src)
 {
 	*this = src;

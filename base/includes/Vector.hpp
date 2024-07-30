@@ -18,6 +18,7 @@ private:
 
 public:
 	Vector<K>(std::vector<K> vec = std::vector<K>());
+	Vector<K>(size_t n);
 	Vector<K>(Vector<K> const &src);
 	~Vector();
 

@@ -60,6 +60,14 @@ Test(MatrixClass, shapeConstructor)
 	std::stringstream ss;
 	ss << my_mat;
 	cr_expect(strcmp(ss.str().c_str(), "[[0, 0, 0],\n [0, 0, 0]]") == 0);
+
+	my_mat = Matrix<float>(0, 0);
+	result = {0, 0};
+	cr_expect(my_mat.getShape() == result);
+
+	ss.str("");
+	ss << my_mat;
+	cr_expect(strcmp(ss.str().c_str(), "[]") == 0);
 }
 
 

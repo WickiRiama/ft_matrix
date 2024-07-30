@@ -18,7 +18,7 @@ Test(VectorClass, defaultConstructor)
 Test(VectorClass, vectorConstructor)
 {
 	Vector<float> my_vec1({1, 2, 3});
-	Vector<float> my_vec2({1});
+	Vector<float> my_vec2(std::vector<float>(1, 1.f));
 	Vector<float> my_vec3({-1, -2, -3});
 	Vector<float> my_vec4({-1.5, 2.5, 300, 8});
 
@@ -44,6 +44,24 @@ Test(VectorClass, vectorConstructor)
 	cr_expect(strcmp(ss.str().c_str(), "[-1.5, 2.5, 300, 8]") == 0);
 
 }
+
+Test(VectorClass, shapeConstructor)
+{
+	Vector<float> my_vec(2);
+	cr_expect(my_vec.getSize() == 2);
+
+	std::stringstream ss;
+	ss << my_vec;
+	cr_expect(ss.str() == "[0, 0]");
+
+	my_vec = Vector<float>(0);
+	cr_expect(my_vec.getSize() == 0);
+
+	ss.str("");
+	ss << my_vec;
+	cr_expect(ss.str() == "[]");
+}
+
 
 Test(VectorClass, copyConstructor)
 {

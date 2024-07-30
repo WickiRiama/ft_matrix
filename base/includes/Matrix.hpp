@@ -18,6 +18,7 @@ private:
 
 public:
 	Matrix<K>(std::vector<std::vector<K>> mat = std::vector<std::vector<K>>());
+	Matrix<K>(size_t n_rows, size_t n_col);
 	Matrix<K>(Matrix<K> const &src);
 	~Matrix();
 

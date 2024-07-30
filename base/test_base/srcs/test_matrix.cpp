@@ -51,6 +51,18 @@ Test(MatrixClass, vectorConstructor)
 	cr_expect(strcmp(ss.str().c_str(), "[[-1.5, 2.5, 300, 8],\n [-1.5, 2.5, 300, 8]]") == 0);
 }
 
+Test(MatrixClass, shapeConstructor)
+{
+	Matrix<float> my_mat(2, 3);
+	std::pair<size_t, size_t> result = {2, 3};
+	cr_expect(my_mat.getShape() == result);
+
+	std::stringstream ss;
+	ss << my_mat;
+	cr_expect(strcmp(ss.str().c_str(), "[[0, 0, 0],\n [0, 0, 0]]") == 0);
+}
+
+
 Test(MatrixClass, copyConstructor)
 {
 	Matrix<float> my_mat1;

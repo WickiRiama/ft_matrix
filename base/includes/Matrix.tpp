@@ -27,6 +27,21 @@ Matrix<K>::Matrix(std::vector<std::vector<K>> mat)
 }
 
 template <typename K>
+Matrix<K>::Matrix(size_t n_rows, size_t n_cols)
+{
+	for (size_t row = 0; row < n_rows; row++)
+	{
+		std::vector<K> tmp;
+		for (size_t col = 0; col < n_cols; col++)
+		{
+			tmp.push_back(K());
+		}
+		_matrix.push_back(tmp);
+	}
+}
+
+
+template <typename K>
 Matrix<K>::Matrix(Matrix<K> const &src)
 {
 	*this = src;

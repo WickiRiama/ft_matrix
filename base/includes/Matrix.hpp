@@ -37,10 +37,14 @@ public:
 	void sub(Matrix<K> const &v);
 	void scl(K const a);
 
-	// Multiplication ==========================================================
+	// Multiplication =========================================================
 public:
 	Matrix<K> mul_mat(Matrix<K> const &mat) const;
 	Vector<K> mul_vec(Vector<K> const &vec) const;
+
+	// Trace ==================================================================
+public:
+	K trace(void) const;
 };
 
 template <typename K>

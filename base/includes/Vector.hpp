@@ -37,7 +37,7 @@ public:
 	void scl(K const a);
 
 	// Dot Product ============================================================
-	K dot(Vector<K> const &v);
+	K dot(Vector<K> const &v) const;
 
 	// Norm ============================================================
 	float norm_1(void) const;

@@ -6,7 +6,7 @@
 #include "Vector.hpp"
 
 template <typename K>
-K Vector<K>::dot(Vector<K> const &v)
+K Vector<K>::dot(Vector<K> const &v) const
 {
 	size_t size = this->getSize();
 	if (v.getSize() != size)

@@ -11,12 +11,13 @@ float angle_cos(Vector<K> const &u, Vector<K> const &v)
 	{
 		throw std::length_error("Vectors with different sizes.");
 	}
-	// if (u.norm() == 0 || v.norm() == 0)
-	// {
-	// 	throw
-	// }
-	// std::cout << u.norm() << std::endl;
-	return (u.norm() / 0);
+
+	if (u.norm() == 0 || v.norm() == 0)
+	{
+		throw std::runtime_error("Attempt to divide by 0.");
+	}
+
+	return (u.dot(v) / u.norm() / v.norm());
 }
 
 

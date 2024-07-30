@@ -92,10 +92,10 @@ Test(Lerp, matrixSizeError)
 {
 	std::stringstream ss("");
 	std::vector<float> v(1, 1.);
-	std::vector<std::vector<float>> m(1, v);
+	// std::vector<std::vector<float>> m(1, v);
 	try
 	{
-		Matrix<float> result = lerp(Matrix<float>({m}), Matrix<float>({{1.}, {2.}}), 0.5);
+		Matrix<float> result = lerp(Matrix<float>(std::vector<std::vector<float>>(1, v)), Matrix<float>({std::vector<float>(1, 1.f), std::vector<float>(1, 2.f)}), 0.5);
 	}
 	catch(const std::length_error& e)
 	{

@@ -36,6 +36,11 @@ public:
 	void add(Matrix<K> const &v);
 	void sub(Matrix<K> const &v);
 	void scl(K const a);
+
+	// Multiplication ==========================================================
+public:
+	Matrix<K> mul_mat(Matrix<K> const &mat) const;
+	Vector<K> mul_vec(Vector<K> const &vec) const;
 };
 
 template <typename K>

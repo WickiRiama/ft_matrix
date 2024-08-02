@@ -50,6 +50,9 @@ public:
 public:
 	Matrix<K> transpose(void) const;
 
+	// Row Echelon ============================================================
+public:
+	Matrix<K> row_echelon(void) const;
 };
 
 template <typename K>

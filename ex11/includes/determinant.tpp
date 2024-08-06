@@ -2,8 +2,16 @@
 #define DETERMINANT_TPP
 
 #include <iostream>
+#include <cmath>
 
 #include "Matrix.hpp"
+
+template <typename K>
+K Matrix<K>::determinant_2x2(void) const
+{
+	return fma(-1 * (*this)[0][1], (*this)[1][0], (*this)[0][0] * (*this)[1][1]);
+}
+
 
 template <typename K>
 K Matrix<K>::determinant(void) const
@@ -22,6 +30,9 @@ K Matrix<K>::determinant(void) const
 			break;
 		case 1:
 			result = (*this)[0][0];
+			break;
+		case 2:
+			result = this->determinant_2x2();
 			break;
 		default:
 			std::cerr << "Determinant for matrices larger than 4x4 is not implemented." << std::endl;

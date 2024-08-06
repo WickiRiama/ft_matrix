@@ -55,6 +55,8 @@ public:
 	Matrix<K> row_echelon(void) const;
 
 	// Determinant ============================================================
+private:
+	K determinant_2x2(void) const;
 public:
 	K determinant(void) const;
 };

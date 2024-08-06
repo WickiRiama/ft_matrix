@@ -5,3 +5,5 @@
 #include "determinant.tpp"
 
 #endif
+
+// Online calculator https://www.dcode.fr/determinant-matrice

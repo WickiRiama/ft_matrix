@@ -53,6 +53,10 @@ public:
 	// Row Echelon ============================================================
 public:
 	Matrix<K> row_echelon(void) const;
+
+	// Determinant ============================================================
+public:
+	K determinant(void) const;
 };
 
 template <typename K>

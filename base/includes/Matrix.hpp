@@ -56,7 +56,9 @@ public:
 
 	// Determinant ============================================================
 private:
+	Matrix<K> create_minor(size_t col) const;
 	K determinant_2x2(void) const;
+	K determinant_nxn(size_t n) const;
 public:
 	K determinant(void) const;
 };

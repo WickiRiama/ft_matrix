@@ -50,3 +50,15 @@ Test(Determinant, size_2)
 	m = Matrix<float>({{1, -2}, {3, -4}});
 	cr_expect(isEqual(m.determinant(), 2));
 }
+
+Test(Determinant, size_3)
+{
+	Matrix<float> m({{2, 0, 0}, {0, 2, 0}, {0, 0, 2}});
+	cr_expect(isEqual(m.determinant(), 8));
+
+	m = Matrix<float>({{2, -3, 1}, {2, 0, -1}, {1, 4, 5}});
+	cr_expect(isEqual(m.determinant(), 49));
+
+	m = Matrix<float>({{1, 0, 0}, {0, 1, 0}, {0, 0, 1}});
+	cr_expect(isEqual(m.determinant(), 1));
+}

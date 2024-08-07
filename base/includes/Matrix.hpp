@@ -64,6 +64,12 @@ private:
 	K determinant_nxn(size_t n) const;
 public:
 	K determinant(void) const;
+
+	// Inverse ================================================================
+private:
+	Matrix<K> augmented_matrix(void) const;
+public:
+	Matrix<K> inverse(void) const;
 };
 
 template <typename K>

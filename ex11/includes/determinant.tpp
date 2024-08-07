@@ -15,13 +15,12 @@ K Matrix<K>::determinant_2x2(void) const
 template <typename K>
 Matrix<K> Matrix<K>::create_minor(size_t col_index) const
 {
-	std::pair<size_t, size_t> shape = this->getShape();
-	Matrix<K> result(shape.first - 1, shape.second - 1);
+	Matrix<K> result(_shape.first - 1, _shape.second - 1);
 
-	for (size_t row = 1; row < shape.first; row++)
+	for (size_t row = 1; row < _shape.first; row++)
 	{
 		size_t new_col = 0;
-		for (size_t col = 0; col < shape.second; col++)
+		for (size_t col = 0; col < _shape.second; col++)
 		{
 			if (col != col_index)
 			{
@@ -55,10 +54,9 @@ K Matrix<K>::determinant(void) const
 	{
 		throw std::length_error("Attempt to get the determinant of a non square matrix.");
 	}
-	std::pair<size_t, size_t> shape = this->getShape();
 	float result;
 
-	switch (shape.first)
+	switch (_shape.first)
 	{
 		case 0:
 			result = 1;

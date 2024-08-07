@@ -3,19 +3,18 @@
 
 #include "Matrix.hpp"
 
-// Search the index of the maximum value in the column 'col', in the matrix 'mat', below the row 'from'
+// Search the index of the maximum value in the column 'col', below the row 'from'
 template<typename K>
-size_t column_max_index(Matrix<K> const &mat, size_t col, size_t from)
+size_t Matrix<K>::column_max_index(size_t col, size_t from) const
 {
-	std::pair<size_t, size_t> shape = mat.getShape();
-	float max_value = mat[from][col];
+	float max_value = (*this)[from][col];
 	size_t max_index = from;
-	for (size_t row = from; row < shape.first; row++)
+	for (size_t row = from; row < _shape.first; row++)
 	{
-		if (mat[row][col] > max_value)
+		if ((*this)[row][col] > max_value)
 		{
 			max_index = row;
-			max_value = mat[row][col];
+			max_value = (*this)[row][col];
 		}
 	}
 	return max_index;
@@ -75,11 +74,10 @@ template<typename K>
 Matrix<K> Matrix<K>::row_echelon(void) const
 {
 	Matrix<K> result(*this);
-	std::pair<size_t, size_t> shape = this->getShape();
 	size_t row = 0;
-	for (size_t col = 0; col < shape.second && row < shape.first; col++)
+	for (size_t col = 0; col < _shape.second && row < _shape.first; col++)
 	{
-		size_t max_i = column_max_index(result, col, row);
+		size_t max_i = result.column_max_index(col, row);
 
 		if (result[max_i][col] != 0)
 		{
@@ -89,7 +87,7 @@ Matrix<K> Matrix<K>::row_echelon(void) const
 			}
 			row_multiplication(result[row], 1 / result[row][col]); // Transforms leading coefficient to 1
 
-			for (size_t r_i = 0; r_i < shape.first; r_i ++) // Transforms other values in column col to 0
+			for (size_t r_i = 0; r_i < _shape.first; r_i ++) // Transforms other values in column col to 0
 			{
 				if (r_i != row && !isEqual(result[r_i][col], 0))
 				{

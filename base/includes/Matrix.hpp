@@ -15,6 +15,7 @@ class Matrix
 	// Base ===================================================================
 private:
 	std::vector<std::vector<K>> _matrix;
+	std::pair<size_t, size_t> _shape;
 
 public:
 	Matrix<K>(std::vector<std::vector<K>> mat = std::vector<std::vector<K>>());
@@ -51,6 +52,8 @@ public:
 	Matrix<K> transpose(void) const;
 
 	// Row Echelon ============================================================
+private:
+	size_t column_max_index(size_t col, size_t from) const;
 public:
 	Matrix<K> row_echelon(void) const;
 

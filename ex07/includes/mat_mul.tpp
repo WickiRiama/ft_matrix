@@ -8,17 +8,15 @@
 template<typename K>
 Matrix<K> Matrix<K>::mul_mat(Matrix<K> const &mat) const
 {
-	std::pair<size_t, size_t> self_shape = this->getShape();
-	std::pair<size_t, size_t> mat_shape = mat.getShape();
-	size_t m = self_shape.first;
-	size_t n = mat_shape.second;
+	size_t m = this->_shape.first;
+	size_t n = mat._shape.second;
 
-	if (self_shape.second != mat_shape.first)
+	if (this->_shape.second != mat._shape.first)
 	{
-		throw std::length_error("Attempt to multiply a matrix of " + std::to_string(self_shape.second) + " columns with a matrix of " + std::to_string(mat_shape.first) + " rows.");
+		throw std::length_error("Attempt to multiply a matrix of " + std::to_string(this->_shape.second) + " columns with a matrix of " + std::to_string(mat._shape.first) + " rows.");
 	}
 
-	size_t p = self_shape.second;
+	size_t p = this->_shape.second;
 	
 	Matrix<float> result(m, n);
 
@@ -38,13 +36,12 @@ Matrix<K> Matrix<K>::mul_mat(Matrix<K> const &mat) const
 template<typename K>
 Vector<K> Matrix<K>::mul_vec(Vector<K> const &vec) const
 {
-	std::pair<size_t, size_t> self_shape = this->getShape();
 	size_t n = vec.getSize();
-	size_t m = self_shape.first;
+	size_t m = this->_shape.first;
 
-	if (self_shape.second != n)
+	if (this->_shape.second != n)
 	{
-		throw std::length_error("Attempt to multiply a matrix of " + std::to_string(self_shape.second) + " columns with a vector of " + std::to_string(n) + " elements.");
+		throw std::length_error("Attempt to multiply a matrix of " + std::to_string(this->_shape.second) + " columns with a vector of " + std::to_string(n) + " elements.");
 	}
 
 	Vector<K> result(m);

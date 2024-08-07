@@ -4,16 +4,6 @@
 
 #include "row_echelon.hpp"
 
-Test(RowEchelon, columnMaxIndex)
-{
-	Matrix<float> mat({{0, 1, 2}, {0, 2, 0}, {0, 0, 1}});
-	cr_expect(column_max_index(mat, 0, 0) == 0);
-	cr_expect(column_max_index(mat, 0, 1) == 1);
-	cr_expect(column_max_index(mat, 1, 0) == 1);
-	cr_expect(column_max_index(mat, 2, 0) == 0);
-	cr_expect(column_max_index(mat, 2, 1) == 2);
-}
-
 Test(RowEchelon, rowSwitch)
 {
 	Matrix<float> mat({{0, 1, 2}, {0, 2, 0}, {0, 0, 1}});

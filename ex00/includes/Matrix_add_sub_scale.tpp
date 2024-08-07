@@ -10,14 +10,13 @@
 template <typename K>
 void Matrix<K>::add(Matrix<K> const &m)
 {
-	std::pair<size_t, size_t> shape = this->getShape();
-	if (m.getShape() != shape)
+	if (m._shape != this->_shape)
 	{
 		throw std::length_error("Matrices with different sizes");
 	}
-	for (size_t row = 0; row < shape.first; row++)
+	for (size_t row = 0; row < _shape.first; row++)
 	{
-		for (size_t col = 0; col < shape.second; col++)
+		for (size_t col = 0; col < _shape.second; col++)
 		{
 			(*this)[row][col] += m[row][col];
 		}
@@ -27,14 +26,13 @@ void Matrix<K>::add(Matrix<K> const &m)
 template <typename K>
 void Matrix<K>::sub(Matrix<K> const &m)
 {
-	std::pair<size_t, size_t> shape = this->getShape();
-	if (m.getShape() != shape)
+	if (m._shape != this->_shape)
 	{
 		throw std::length_error("Matrices with different sizes");
 	}
-	for (size_t row = 0; row < shape.first; row++)
+	for (size_t row = 0; row < _shape.first; row++)
 	{
-		for (size_t col = 0; col < shape.second; col++)
+		for (size_t col = 0; col < _shape.second; col++)
 		{
 			(*this)[row][col] -= m[row][col];
 		}
@@ -44,10 +42,9 @@ void Matrix<K>::sub(Matrix<K> const &m)
 template <typename K>
 void Matrix<K>::scl(K const a)
 {
-	std::pair<size_t, size_t> shape = this->getShape();
-	for (size_t row = 0; row < shape.first; row++)
+	for (size_t row = 0; row < _shape.first; row++)
 	{
-		for (size_t col = 0; col < shape.second; col++)
+		for (size_t col = 0; col < _shape.second; col++)
 		{
 			(*this)[row][col] *= a;
 		}

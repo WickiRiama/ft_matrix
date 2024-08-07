@@ -12,12 +12,14 @@
 template <typename K>
 Matrix<K>::Matrix(std::vector<std::vector<K>> mat)
 {
+	_shape.first = mat.size();
+	_shape.second = 0;
 	if (mat.size() > 0)
 	{
-		size_t row_len = mat[0].size();
+		_shape.second = mat[0].size();
 		for (size_t row = 1; row < mat.size(); row++)
 		{
-			if (mat[row].size() != row_len)
+			if (mat[row].size() != _shape.second)
 			{
 				throw std::length_error("Rows with different sizes");
 			}
@@ -27,7 +29,7 @@ Matrix<K>::Matrix(std::vector<std::vector<K>> mat)
 }
 
 template <typename K>
-Matrix<K>::Matrix(size_t n_rows, size_t n_cols)
+Matrix<K>::Matrix(size_t n_rows, size_t n_cols) : _shape({n_rows, n_cols})
 {
 	for (size_t row = 0; row < n_rows; row++)
 	{
@@ -39,7 +41,6 @@ Matrix<K>::Matrix(size_t n_rows, size_t n_cols)
 		_matrix.push_back(tmp);
 	}
 }
-
 
 template <typename K>
 Matrix<K>::Matrix(Matrix<K> const &src)
@@ -60,6 +61,7 @@ Matrix<K> &Matrix<K>::operator=(Matrix<K> const &rhs)
 	if (this != &rhs)
 	{
 		_matrix = rhs._matrix;
+		_shape = rhs._shape;
 	}
 	return *this;
 }
@@ -79,14 +81,13 @@ const std::vector<K> &Matrix<K>::operator[](std::size_t idx) const
 template <typename K>
 bool Matrix<K>::operator==(Matrix<K> const &b) const
 {
-	std::pair<size_t, size_t> shape = this->getShape();
-	if (b.getShape() != shape)
+	if (b._shape != this->_shape)
 	{
 		return false;
 	}
-	for (size_t row = 0; row < shape.first; row++)
+	for (size_t row = 0; row < _shape.first; row++)
 	{
-		for (size_t col = 0; col < shape.second; col++)
+		for (size_t col = 0; col < _shape.second; col++)
 		{
 			if (!isEqual((*this)[row][col], b[row][col]))
 			{
@@ -135,21 +136,13 @@ std::ostream &operator<<(std::ostream &os, const Matrix<K> &mat)
 template <typename K>
 std::pair<size_t, size_t> Matrix<K>::getShape(void) const
 {
-	if (_matrix.size() == 0)
-	{
-		return {0, 0};
-	}
-	else
-	{
-		return {_matrix.size(), _matrix[0].size()};
-	}
+	return _shape;
 }
 
 template <typename K>
 bool Matrix<K>::isSquare(void) const
 {
-	std::pair<size_t, size_t> shape = this->getShape();
-	return shape.first == shape.second;
+	return _shape.first == _shape.second;
 }
 
 //=============================================================================
@@ -159,15 +152,14 @@ bool Matrix<K>::isSquare(void) const
 template <typename K>
 Vector<K> Matrix<K>::toVector(void) const
 {
-	std::pair<size_t, size_t> shape = this->getShape();
 	std::vector<K> result;
-	if (shape.first == 1)
+	if (_shape.first == 1)
 	{
 		result = (*this)[0];
 	}
-	else if (shape.second == 1)
+	else if (_shape.second == 1)
 	{
-		for (size_t row = 0; row < shape.first; row++)
+		for (size_t row = 0; row < _shape.first; row++)
 		{
 			result.push_back((*this)[row][0]);
 		}

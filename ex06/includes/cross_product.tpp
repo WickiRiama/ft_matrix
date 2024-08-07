@@ -8,8 +8,7 @@
 template<typename K>
 Vector<K> cross_product(Vector<K> const &u, Vector<K> const &v)
 {
-	size_t size = u.getSize();
-	if (size != 3 || v.getSize() != 3)
+	if (u.getSize() != 3 || v.getSize() != 3)
 	{
 		throw std::length_error("Cross product with vectors of size different than 3.");
 	}

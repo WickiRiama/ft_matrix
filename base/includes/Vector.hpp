@@ -15,6 +15,7 @@ class Vector
 	// Base ===================================================================
 private:
 	std::vector<K> _vector;
+	size_t _size;
 
 public:
 	Vector<K>(std::vector<K> vec = std::vector<K>());

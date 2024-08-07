@@ -10,12 +10,11 @@
 template <typename K>
 void Vector<K>::add(Vector<K> const &v)
 {
-	size_t size = this->getSize();
-	if (v.getSize() != size)
+	if (v._size != this->_size)
 	{
 		throw std::length_error("Vectors with different sizes");
 	}
-	for (size_t i = 0; i < size; i++)
+	for (size_t i = 0; i < _size; i++)
 	{
 			(*this)[i] += v[i];
 	}
@@ -24,12 +23,11 @@ void Vector<K>::add(Vector<K> const &v)
 template <typename K>
 void Vector<K>::sub(Vector<K> const &v)
 {
-	size_t size = this->getSize();
-	if (v.getSize() != size)
+	if (v._size != this->_size)
 	{
 		throw std::length_error("Vectors with different sizes");
 	}
-	for (size_t i = 0; i < size; i++)
+	for (size_t i = 0; i < _size; i++)
 	{
 		(*this)[i] -= v[i];
 	}
@@ -38,8 +36,7 @@ void Vector<K>::sub(Vector<K> const &v)
 template <typename K>
 void Vector<K>::scl(K const a)
 {
-	size_t size = this->getSize();
-	for (size_t i = 0; i < size; i++)
+	for (size_t i = 0; i < _size; i++)
 	{
 		(*this)[i] *= a;
 	}

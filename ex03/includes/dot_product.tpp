@@ -8,14 +8,13 @@
 template <typename K>
 K Vector<K>::dot(Vector<K> const &v) const
 {
-	size_t size = this->getSize();
-	if (v.getSize() != size)
+	if (v._size != this->_size)
 	{
 		throw std::length_error("Vectors with different sizes");
 	}
 
 	K result = 0;
-	for (size_t i = 0; i < size; i++)
+	for (size_t i = 0; i < _size; i++)
 	{
 		result = fma((*this)[i], v[i], result);
 	}

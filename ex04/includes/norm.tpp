@@ -9,9 +9,8 @@
 template <typename K>
 float Vector<K>::norm_1(void) const
 {
-	size_t size = this->getSize();
 	float result = 0;
-	for (size_t i = 0; i < size; i++)
+	for (size_t i = 0; i < _size; i++)
 	{
 		if ((*this)[i] < 0)
 		{
@@ -29,10 +28,9 @@ float Vector<K>::norm_1(void) const
 template <typename K>
 float Vector<K>::norm(void) const
 {
-	size_t size = this->getSize();
 	float result = 0;
 
-	for (size_t i = 0; i < size; i++)
+	for (size_t i = 0; i < _size; i++)
 	{
 		result = fma((*this)[i], (*this)[i], result);
 	}
@@ -44,10 +42,9 @@ float Vector<K>::norm(void) const
 template <typename K>
 float Vector<K>::norm_inf(void) const
 {
-	size_t size = this->getSize();
 	float result = 0;
 
-	for (size_t i = 0; i < size; i++)
+	for (size_t i = 0; i < _size; i++)
 	{
 		result = std::max(result, std::max((*this)[i], -1 * (*this)[i]));
 	}

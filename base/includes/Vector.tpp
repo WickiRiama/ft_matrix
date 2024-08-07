@@ -10,12 +10,14 @@
 template <typename K>
 Vector<K>::Vector(std::vector<K> vec)
 {
+	_size = vec.size();
 	_vector = vec;
 }
 
 template <typename K>
 Vector<K>::Vector(size_t n)
 {
+	_size = n;
 	for (size_t i = 0; i < n; i++)
 	{
 		_vector.push_back(K());
@@ -41,6 +43,7 @@ Vector<K> &Vector<K>::operator=(Vector<K> const &rhs)
 	if (this != &rhs)
 	{
 		_vector = rhs._vector;
+		_size = rhs._size;
 	}
 	return *this;
 }
@@ -60,12 +63,11 @@ const K &Vector<K>::operator[](std::size_t idx) const
 template <typename K>
 bool Vector<K>::operator==(Vector<K> const &b) const
 {
-	size_t size = this->getSize();
-	if (b.getSize() != size)
+	if (b._size != this->_size)
 	{
 		return false;
 	}
-	for (size_t i = 0; i < size; i++)
+	for (size_t i = 0; i < _size; i++)
 	{
 		if (!isEqual((*this)[i], b[i]))
 		{
@@ -78,8 +80,9 @@ bool Vector<K>::operator==(Vector<K> const &b) const
 template <typename K>
 std::ostream& operator<<(std::ostream& os, const Vector<K> &vec)
 {
+	size_t size = vec.getSize();
 	os << "[";
-	for (size_t i = 0; i < vec.getSize(); i++)
+	for (size_t i = 0; i < size; i++)
 	{
 		if (i != 0)
 		{
@@ -101,20 +104,19 @@ std::ostream& operator<<(std::ostream& os, const Vector<K> &vec)
 template <typename K>
 size_t Vector<K>::getSize(void) const
 {
-	return _vector.size();
+	return _size;
 }
 
 template <typename K>
 Matrix<K> Vector<K>::toColMatrix(void) const
 {
-	size_t size = this->getSize();
-	if (size == 0)
+	if (_size == 0)
 	{
 		return Matrix<K>();
 	}
 
 	std::vector< std::vector<K> > outvector;
-	for (size_t k = 0; k < size; k++)
+	for (size_t k = 0; k < _size; k++)
 	{
 		std::vector<K> invector(1, (*this)[k]);
 		outvector.push_back(invector);
@@ -126,15 +128,14 @@ Matrix<K> Vector<K>::toColMatrix(void) const
 template <typename K>
 Matrix<K> Vector<K>::toRowMatrix(void) const
 {
-	size_t size = this->getSize();
-	if (size == 0)
+	if (_size == 0)
 	{
 		return Matrix<K>();
 	}
 
 	std::vector< std::vector<K> > outvector;
 	std::vector<K> invector;
-	for (size_t k = 0; k < size; k++)
+	for (size_t k = 0; k < _size; k++)
 	{
 		invector.push_back((*this)[k]);
 	}

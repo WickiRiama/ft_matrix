@@ -20,7 +20,7 @@ Vector<K> lerp(Vector<K> const &u, Vector<K> const &v, float t)
 	{
 		throw std::length_error("Vectors with different sizes");
 	}
-	Vector<K> result(u);
+	Vector<K> result(size);
 	for (size_t i = 0; i < size; i++)
 	{
 		result[i] = fma(t, v[i] - u[i], u[i]);
@@ -36,7 +36,7 @@ Matrix<K> lerp(Matrix<K> const &u, Matrix<K> const &v, float t)
 	{
 		throw std::length_error("Matrices with different sizes");
 	}
-	Matrix<K> result(u);
+	Matrix<K> result(shape.first, shape.second);
 	for (size_t row = 0; row < shape.first; row++)
 	{
 		for (size_t col = 0; col < shape.second; col++)

@@ -71,6 +71,9 @@ private:
 	bool is_singular(Matrix<K> const &echeloned) const;
 public:
 	Matrix<K> inverse(void) const;
+
+	// Rank ===================================================================
+	size_t rank(void) const;
 };
 
 template <typename K>

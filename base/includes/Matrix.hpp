@@ -68,6 +68,7 @@ public:
 	// Inverse ================================================================
 private:
 	Matrix<K> augmented_matrix(void) const;
+	bool is_singular(Matrix<K> const &echeloned) const;
 public:
 	Matrix<K> inverse(void) const;
 };

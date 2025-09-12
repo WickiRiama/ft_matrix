@@ -1,6 +1,14 @@
 NAME = add_sub_sca_test
 NAME_DEBUG = debug_test
 
+CRITERION_DIR = ${HOME}/Criterion/
+CRITERION_LIB_DIR =  ${CRITERION_DIR}build/src/
+CRITERION_LIB = libcriterion.a
+CRITERION_INSTALL_SCRIPT = ../criterion_install.sh
+
+COLOR_BCYAN = \e[1;96m
+COLOR_END = \e[0m
+
 SRCS_DIR_BASE = ../base/test_base/srcs
 SRCS_DIR_ADD_SUB_SCA = ./srcs
 
@@ -30,23 +38,29 @@ IFLAGS = -I../base/includes \
 		 -I./includes/ \
 		 -I${HOME}/Criterion/include/ \
 		 -MMD
-LFLAGS = -Wl,-rpath=${HOME}/Criterion/build/src -L${HOME}/Criterion/build/src -lcriterion
+LFLAGS = -Wl,-rpath=${CRITERION_LIB_DIR} -L${CRITERION_LIB_DIR} -lcriterion
 
-.PHONY: all
-all: ${NAME} ${NAME_DEBUG}
-
-${NAME}: ${OBJS_DIR} ${OBJS}
+${NAME}: ${CRITERION_LIB_DIR}${CRITERION_LIB} ${OBJS_DIR} ${OBJS}
+	@echo "\n${COLOR_BCYAN}Linking...${COLOR_END}"
 	${CXX} ${LFLAGS} ${CXXFLAGS} ${OBJS} -o ${NAME}
 
-${NAME_DEBUG}: ${OBJS_DIR} ${OBJS_DEBUG}
+${NAME_DEBUG}: ${CRITERION_LIB_DIR}${CRITERION_LIB} ${OBJS_DIR} ${OBJS_DEBUG}
+	@echo "\n${COLOR_BCYAN}Linking...${COLOR_END}"
 	${CXX} ${LFLAGS} ${CXXFLAGS} ${OBJS_DEBUG} -o ${NAME_DEBUG}
 
-
-${OBJS_DIR}%.o: %.cpp 
+${OBJS_DIR}%.o: %.cpp
+	@echo "\n${COLOR_BCYAN}Compiling...${COLOR_END}"
 	${CXX} ${IFLAGS} ${CXXFLAGS} -c $< -o $@
 
 ${OBJS_DIR}:
 	mkdir -p ${OBJS_DIR}
+
+${CRITERION_LIB_DIR}${CRITERION_LIB}:
+	@echo "\n${COLOR_BCYAN}Getting and building Criterion...${COLOR_END}"
+	. ${CRITERION_INSTALL_SCRIPT}
+
+.PHONY: all
+all: ${NAME} ${NAME_DEBUG}
 
 .PHONY: debug
 debug: ${NAME_DEBUG}
@@ -59,6 +73,7 @@ clean:
 fclean: clean
 	rm -rf ${NAME}
 	rm -rf ${NAME_DEBUG}
+	rm -rf ${CRITERION_DIR}
 
 .PHONY: re
 re: fclean

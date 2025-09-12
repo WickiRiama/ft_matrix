@@ -77,6 +77,6 @@ fclean: clean
 
 .PHONY: re
 re: fclean
-	make -C .
+	make -C . --no-print-directory
 
 -include ${DEPS} ${DEPS_DEBUG}
